@@ -25,12 +25,7 @@ import com.quintus.labs.grocerystore.adapter.ProductAdapter;
 import com.quintus.labs.grocerystore.helper.Converter;
 import com.quintus.labs.grocerystore.helper.Data;
 
-/**
- * Grocery App
- * https://github.com/quintuslabs/GroceryStore
- * Created on 18-Feb-2019.
- * Created by : Santosh Kumar Dash:- http://santoshdash.epizy.com
- */
+
 public class ProductActivity extends BaseActivity {
     private static int cart_count = 0;
     Data data;
@@ -48,7 +43,6 @@ public class ProductActivity extends BaseActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         final Drawable upArrow = getResources().getDrawable(R.drawable.ic_arrow_back_black_24dp);
-        //upArrow.setColorFilter(Color.parseColor("#FFFFFF"), PorterDuff.Mode.SRC_ATOP);
         getSupportActionBar().setHomeAsUpIndicator(upArrow);
 
         cart_count = cartCount();
@@ -59,26 +53,19 @@ public class ProductActivity extends BaseActivity {
     }
 
     private void changeActionBarTitle(ActionBar actionBar) {
-        // Create a LayoutParams for TextView
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT, // Width of TextView
                 RelativeLayout.LayoutParams.WRAP_CONTENT); // Height of TextView
         TextView tv = new TextView(getApplicationContext());
-        // Apply the layout parameters to TextView widget
         tv.setLayoutParams(lp);
         tv.setGravity(Gravity.CENTER);
         tv.setTypeface(null, Typeface.BOLD);
-        // Set text to display in TextView
-        tv.setText("Products"); // ActionBar title text
+        tv.setText("Products"); 
         tv.setTextSize(20);
 
-        // Set the text color of TextView to red
-        // This line change the ActionBar title text color
         tv.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
 
-        // Set the ActionBar display option
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        // Finally, set the newly created TextView as ActionBar custom view
         actionBar.setCustomView(tv);
     }
 
@@ -117,7 +104,6 @@ public class ProductActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                // todo: goto back activity from here
 
                 Intent intent = new Intent(ProductActivity.this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -136,7 +122,6 @@ public class ProductActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         MenuItem menuItem = menu.findItem(R.id.cart_action);
         menuItem.setIcon(Converter.convertLayoutToImage(ProductActivity.this, cart_count, R.drawable.ic_shopping_basket));
